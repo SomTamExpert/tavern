@@ -2,6 +2,7 @@ package ch.bbw.km.tavern;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
@@ -15,8 +16,15 @@ public class ReservationController {
 //      return "redirect:/reservationlistview.html";
 //   }
 
-    @GetMapping("/addreservation")
+    @GetMapping("/addesreservation")
     public String addReservation(HttpServletRequest request) {
+        System.out.println("ReservationController.addReservation");
+        printRequest(request);
+        return "reservationlistview";
+    }
+
+    @PostMapping("/reservation")
+    public String postReservation(HttpServletRequest request) {
         System.out.println("ReservationController.addReservation");
         printRequest(request);
         return "reservationlistview";
