@@ -19,10 +19,4 @@ public class TavernController {
       System.out.println("TavernController.showTavern");
       return "tavernview";
    }
-//   @GetMapping("/addesreservation")
-//   public String showReservationList(){
-//      System.out.println("redirecting to reservationlistviww.html");
-//      return "redirect:/reservationlistview.html";
-//   }
-
 }

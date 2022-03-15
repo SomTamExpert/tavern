@@ -9,6 +9,12 @@ import java.util.Collections;
 @Controller
 public class ReservationController {
 
+//   @GetMapping("/addesreservation")
+//   public String showReservationList(){
+//      System.out.println("redirecting to reservationlistviww.html");
+//      return "redirect:/reservationlistview.html";
+//   }
+
     @GetMapping("/addesreservation")
     public String addReservation(HttpServletRequest request){
         System.out.println("ReservationController.addReservation");
