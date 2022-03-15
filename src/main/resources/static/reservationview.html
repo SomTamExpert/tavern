@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Meine Taverne</title>
+    <link rel="stylesheet" href="css/mvp.css">
 </head>
 <body>
     <header>
@@ -11,17 +12,52 @@
                 <li><a href="/">Home</a></li>
                 <li>Reservieren</li>
                 <li><a href="/reservationlistview.html">Reservationsliste</a></li>
-                <li><a href="/Foodback">Foodback</a></li>
+                <li><a href="/foodbackview.html">Foodback</a></li>
+                <li><a href="/contactview.html">Kontakt</a></li>
             </ul>
         </nav>
         <hr>
     </header>
     <main>
+        <h1>Reservation erfassen</h1>
         <section>
-            <header>
-                <h1>Reservation erfassen</h1>
-                <p>To be done</p>
-            </header>
+                <form action="https://hookb.in/lJy3lykmYZHrXXZWdJxB" method="post">
+                    <label for="lastName">Name:</label>
+                    <input type="text" id="lastName" name="lastName" size="20" placeholder="Meier">
+                    <label for="firstName">Vorname:</label>
+                    <input type="text" id=firstName" name="firstName" size="20" placeholder="Max">
+                    <label for="phone">Tel Nummer:</label>
+                    <input type="text" id=phone" name="phone" size="20" placeholder="Max">
+                    <label for="reservations">Für wieviel Gäste möchten Sie reservien:</label>
+                    <select id="reservations">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="<6"><6</option>
+                    </select>
+                    <p>Welche Menüwahl möchten Sie treffen</p>
+                    <input type="checkbox" id="apero" name="apero" value="apero">
+                    <label for="apero">Apéro</label><br>
+                    <input type="checkbox" id="firstPlate" name="firstPlate" value="firstPlate">
+                    <label for="firstPlate">Vorspeise</label><br>
+                    <input type="checkbox" id="mainDish" name="mainDish" value="mainDish">
+                    <label for="mainDish">Hauptspeise</label><br>
+                    <input type="checkbox" id="desert" name="desert" value="desert">
+                    <label for="desert">Dessert</label><br>
+                    <p>Wählen Sie Ihr Konsumverhalten:</p>
+                    <input type="radio" id="vegi" name="eatingHabit" value="vegi">
+                    <label for="vegi">Vegetarier/in</label><br>
+                    <input type="radio" id="vegan" name="eatingHabit" value="vegan">
+                    <label for="vegan">Veganer/in</label><br>
+                    <input type="radio" id=meatlover" name="eatingHabit" value="meatlover">
+                    <label for="meatlover">Fleischesser</label>
+                    <label for="notes">Bemerkung:</label>
+                    <textarea cols="40" rows="5" id="notes" name="notes"></textarea>
+                    <button type="submit">Submit</button>
+                </form>
         </section>
     </main>
     <footer>
