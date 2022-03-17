@@ -20,14 +20,14 @@ public class ReservationController {
     public String addReservation(HttpServletRequest request) {
         System.out.println("ReservationController.addReservation");
         printRequest(request);
-        return "reservationlistview";
+        return "redirect:/reservationlistview.html";
     }
 
     @PostMapping("/reservation")
     public String postReservation(HttpServletRequest request) {
         System.out.println("ReservationController.addReservation");
         printRequest(request);
-        return "reservationlistview";
+        return "redirect:/reservationlistview.html";
     }
 
     private void printRequest(HttpServletRequest request) {
