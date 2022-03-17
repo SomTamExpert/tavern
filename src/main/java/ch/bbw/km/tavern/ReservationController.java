@@ -16,14 +16,14 @@ public class ReservationController {
 //      return "redirect:/reservationlistview.html";
 //   }
 
-    @GetMapping("/addesreservation")
+    @GetMapping("/addreservation")
     public String addReservation(HttpServletRequest request) {
         System.out.println("ReservationController.addReservation");
         printRequest(request);
         return "redirect:/reservationlistview.html";
     }
 
-    @PostMapping("/reservation")
+    @PostMapping("/addreservation")
     public String postReservation(HttpServletRequest request) {
         System.out.println("ReservationController.addReservation");
         printRequest(request);
