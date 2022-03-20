@@ -3,6 +3,7 @@ package ch.bbw.km.tavern;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
@@ -23,10 +24,16 @@ public class ReservationController {
         return "redirect:/reservationlistview.html";
     }
 
+    //    @PostMapping("/addreservation")
+//    public String postReservation(HttpServletRequest request) {
+//        System.out.println("ReservationController.addReservation");
+//        printRequest(request);
+//        return "redirect:/reservationlistview.html";
+//    }
     @PostMapping("/addreservation")
-    public String postReservation(HttpServletRequest request) {
+    public String postReservation(@RequestParam String lastName, @RequestParam String firstName, @RequestParam String phone, @RequestParam String reservations, @RequestParam String dish, @RequestParam String eatingHabit, @RequestParam String notes) {
         System.out.println("ReservationController.addReservation");
-        printRequest(request);
+        System.out.println("lastName: " + lastName + "\n" + "firstName: " + firstName + "\n" + "phone: " + phone + "\n" + "reservations: " + reservations + "\n" + "dish: " + dish + "\n" + "eating habit: " + eatingHabit + "\n" + "notes: " + notes);
         return "redirect:/reservationlistview.html";
     }
 
