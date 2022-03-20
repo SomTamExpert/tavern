@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Collections;
+import java.util.*;
 
 @Controller
 public class ReservationController {
 
-    //   @GetMapping("/addesreservation")
+//   @GetMapping("/addesreservation")
 //   public String showReservationList(){
 //      System.out.println("redirecting to reservationlistviww.html");
 //      return "redirect:/reservationlistview.html";
@@ -25,7 +25,7 @@ public class ReservationController {
         return "redirect:/reservationlistview.html";
     }
 
-    //    @PostMapping("/addreservation")
+//    @PostMapping("/addreservation")
 //    public String postReservation(HttpServletRequest request) {
 //        System.out.println("ReservationController.addReservation");
 //        printRequest(request);
@@ -39,11 +39,23 @@ public class ReservationController {
 //        return "redirect:/reservationlistview.html";
 //    }
 
+//    @PostMapping("/addreservation")
+//    public String postReservation(@RequestParam String lastName, @RequestParam String firstName, @RequestParam String phone, @RequestParam String reservations, @RequestParam String dish, @RequestParam String eatingHabit, @RequestParam String notes) {
+//        System.out.println("ReservationController.addReservation");
+//        Reservation reservation = new Reservation(lastName, firstName, phone, reservations, dish, eatingHabit, notes);
+//        System.out.println(reservation.toString());
+//        return "redirect:/reservationlistview.html";
+//    }
+
+    ArrayList<Reservation> reservationList = new ArrayList<Reservation>();
+
     @PostMapping("/addreservation")
     public String postReservation(@RequestParam String lastName, @RequestParam String firstName, @RequestParam String phone, @RequestParam String reservations, @RequestParam String dish, @RequestParam String eatingHabit, @RequestParam String notes) {
         System.out.println("ReservationController.addReservation");
         Reservation reservation = new Reservation(lastName, firstName, phone, reservations, dish, eatingHabit, notes);
-        System.out.println(reservation.toString());
+        System.out.println(reservation);
+        reservationList.add(reservation);
+        System.out.println(reservationList);
         return "redirect:/reservationlistview.html";
     }
 
