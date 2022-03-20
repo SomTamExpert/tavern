@@ -1,5 +1,6 @@
 package ch.bbw.km.tavern;
 
+import ch.bbw.km.tavern.models.Reservation;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,7 +12,7 @@ import java.util.Collections;
 @Controller
 public class ReservationController {
 
-//   @GetMapping("/addesreservation")
+    //   @GetMapping("/addesreservation")
 //   public String showReservationList(){
 //      System.out.println("redirecting to reservationlistviww.html");
 //      return "redirect:/reservationlistview.html";
@@ -30,10 +31,19 @@ public class ReservationController {
 //        printRequest(request);
 //        return "redirect:/reservationlistview.html";
 //    }
+
+//    @PostMapping("/addreservation")
+//    public String postReservation(@RequestParam String lastName, @RequestParam String firstName, @RequestParam String phone, @RequestParam String reservations, @RequestParam String dish, @RequestParam String eatingHabit, @RequestParam String notes) {
+//        System.out.println("ReservationController.addReservation");
+//        System.out.println("lastName: " + lastName + "\n" + "firstName: " + firstName + "\n" + "phone: " + phone + "\n" + "reservations: " + reservations + "\n" + "dish: " + dish + "\n" + "eating habit: " + eatingHabit + "\n" + "notes: " + notes);
+//        return "redirect:/reservationlistview.html";
+//    }
+
     @PostMapping("/addreservation")
     public String postReservation(@RequestParam String lastName, @RequestParam String firstName, @RequestParam String phone, @RequestParam String reservations, @RequestParam String dish, @RequestParam String eatingHabit, @RequestParam String notes) {
         System.out.println("ReservationController.addReservation");
-        System.out.println("lastName: " + lastName + "\n" + "firstName: " + firstName + "\n" + "phone: " + phone + "\n" + "reservations: " + reservations + "\n" + "dish: " + dish + "\n" + "eating habit: " + eatingHabit + "\n" + "notes: " + notes);
+        Reservation reservation = new Reservation(lastName, firstName, phone, reservations, dish, eatingHabit, notes);
+        System.out.println(reservation.toString());
         return "redirect:/reservationlistview.html";
     }
 
