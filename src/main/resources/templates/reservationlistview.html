@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Meine Taverne</title>
@@ -26,9 +26,7 @@
             <table>
                 <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Vorname</th>
-                    <th>Tel Nummer</th>
+                    <th>Vor/ und Nachname</th>
                     <th>Anzahl Gäste</th>
                     <th>Menüwahl</th>
                     <th>Konsumverhalten</th>
@@ -36,29 +34,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>Heinz</td>
-                    <td>Max</td>
-                    <td>6</td>
-                    <td>Apéro</td>
-                    <td>Vegetarier</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>Kunh</td>
-                    <td>Peter</td>
-                    <td>4</td>
-                    <td>Apéro, Hauptgang</td>
-                    <td>Fleischesser</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>Ziegler</td>
-                    <td>Loris</td>
-                    <td>2</td>
-                    <td>Dessert</td>
-                    <td>Veganer</td>
-                    <td>Bitte keine Gelatine</td>
+                <tr th:each="reservation : ${reservationlist}">
+                    <td th:text="${reservation.firstName} + ' ' + ${reservation.lastName}"></td>
+                    <td th:text="${reservation.reservations}"></td>
+                    <td th:text="${reservation.dish}"></td>
+                    <td th:text="${reservation.eatingHabit}"></td>
+                    <td th:text="${reservation.notes}"></td>
                 </tr>
                 </tbody></table>
         </section>

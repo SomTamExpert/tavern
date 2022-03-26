@@ -12,6 +12,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class ReservationController {
 
+    @Autowired
+    ReservationService service;
+
+    @Autowired
+    public ReservationController(ReservationService service) {
+        this.service = service;
+    }
+
+    @PostMapping("/addreservation")
+    public String addReservation(@ModelAttribute("reservation") Reservation reservation, Model model) {
+        System.out.println("ReservationController.addReservation");
+        System.out.println(reservation);
+        service.getReservationList().add(reservation);
+        return "redirect:/reservationlistview";
+    }
+
 //   @GetMapping("/addesreservation")
 //   public String showReservationList(){
 //      System.out.println("redirecting to reservationlistviww.html");
@@ -88,27 +104,11 @@ public class ReservationController {
 //        System.out.println("ReservationController.addReservationPost");
 //        return "redirect:/reservationlistview.html";
 //    }
-    @Autowired
-    ReservationService service;
-
-    @Autowired
-    public ReservationController(ReservationService service) {
-        this.service = service;
-    }
-
-//    @GetMapping("/addreservation")
+    //    @GetMapping("/addreservation")
 //    public String addReservation(Model model) {
 //        System.out.println("ReservationController.addReservation");
 //        Reservation newReservation = new Reservation("Al-Kubaisi","Abdullah", "3", "apero", "vegi", "");
-//        model.addAttribute("reservation", newReservation);
+//        model.addAttribute("reservationlsit", newReservation);
 //        return "reservationview";
 //    }
-
-    @PostMapping("/addreservation")
-    public String addReservation(@ModelAttribute("reservation") Reservation reservation, Model model) {
-        System.out.println("ReservationController.addReservation");
-        System.out.println(reservation);
-        service.getReservationList().add(reservation);
-        return "redirect:/reservationlistview";
-    }
 }
