@@ -3,9 +3,6 @@ package ch.bbw.km.tavern;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.Collections;
-
 /**
  * TavernController
  *
@@ -14,9 +11,14 @@ import java.util.Collections;
  */
 @Controller
 public class TavernController {
-   @GetMapping("/")
-   public String showTavern(){
-      System.out.println("TavernController.showTavern");
-      return "tavernview";
-   }
+    @GetMapping("/")
+    public String showTavern() {
+        System.out.println("TavernController.showTavern");
+        return "tavernview";
+    }
+    @GetMapping("/contactview")
+    public String showContact() {
+        System.out.println("TavernController.showContact");
+        return "contactview";
+    }
 }
