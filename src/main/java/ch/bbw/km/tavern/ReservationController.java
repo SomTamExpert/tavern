@@ -1,11 +1,16 @@
 package ch.bbw.km.tavern;
 
+import ch.bbw.km.tavern.models.Reservation;
+import ch.bbw.km.tavern.models.ReservationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class ReservationLiatController {
+public class ReservationController {
 
 //   @GetMapping("/addesreservation")
 //   public String showReservationList(){
@@ -66,21 +71,44 @@ public class ReservationLiatController {
 //            System.out.println("\t" + name + ": " + request.getParameter(name));
 //        });
 //    }
-    @GetMapping("/addreservation")
-    public String addReservation() {
-        System.out.println("ReservationController.addReservation");
-        return "reservationview";
+//    @GetMapping("/addreservation")
+//    public String addReservation() {
+//        System.out.println("ReservationController.addReservation");
+//        return "reservationview";
+//    }
+//
+//    @GetMapping("/reservationlistview")
+//    public String showReservationListViw() {
+//        System.out.println("ReservationController.showReservationList");
+//        return "reservationlistview";
+//    }
+//
+//    @PostMapping("/addreservation")
+//    public String addReservationPost() {
+//        System.out.println("ReservationController.addReservationPost");
+//        return "redirect:/reservationlistview.html";
+//    }
+    @Autowired
+    ReservationService service;
+
+    @Autowired
+    public ReservationController(ReservationService service) {
+        this.service = service;
     }
 
-    @GetMapping("/reservationlistview")
-    public String showReservationListViw() {
-        System.out.println("ReservationController.showReservationList");
-        return "reservationlistview";
-    }
+//    @GetMapping("/addreservation")
+//    public String addReservation(Model model) {
+//        System.out.println("ReservationController.addReservation");
+//        Reservation newReservation = new Reservation("Al-Kubaisi","Abdullah", "3", "apero", "vegi", "");
+//        model.addAttribute("reservation", newReservation);
+//        return "reservationview";
+//    }
 
     @PostMapping("/addreservation")
-    public String addReservationPost() {
-        System.out.println("ReservationController.addReservationPost");
-        return "redirect:/reservationlistview.html";
+    public String addReservation(@ModelAttribute("reservation") Reservation reservation, Model model) {
+        System.out.println("ReservationController.addReservation");
+        System.out.println(reservation);
+        service.getReservationList().add(reservation);
+        return "redirect:/reservationlistview";
     }
 }

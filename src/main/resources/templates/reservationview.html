@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Meine Taverne</title>
@@ -11,9 +11,9 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 <li>Reservieren</li>
-                <li><a href="/reservationlistview">Reservationsliste</a></li>
-                <li><a href="/Foodback">Foodback</a></li>
-                <li><a href="/contactview">Kontakt</a></li>
+                <li><a href="/reservationlistview.html">Reservationsliste</a></li>
+                <li><a href="/foodbackview.html">Foodback</a></li>
+                <li><a href="/contactview.html">Kontakt</a></li>
             </ul>
         </nav>
         <hr>
@@ -21,16 +21,18 @@
     <main>
         <h1>Reservation erfassen</h1>
         <section>
-                <form action="/addreservation" method="post">
-                    <h3>Bitte Formular für die Reervation ausfüllen:</h3>
+            <h3>Bitte Formular für die Reserviation ausfüllen:</h3>
+                <form th:object="${reservation}" th:action="@{/addreservation}" method="post">
                     <label for="lastName">Name:</label>
-                    <input type="text" id="lastName" name="lastName" size="20" placeholder="Meier">
-                    <label for="firstName">Vorname:</label>
-                    <input type="text" id=firstName" name="firstName" size="20" placeholder="Max">
-                    <label for="phone">Tel Nummer:</label>
-                    <input type="text" id=phone" name="phone" size="20" placeholder="+41791234567">
-                    <label for="reservations" name="reservations">Für wieviel Gäste möchten Sie reservien:</label>
-                    <select id="reservations" name="reservations">
+                    <input type="text" th:field="*{lastName}" size="20" placeholder="Meier">
+                    <label for="firstName">Name:</label>
+                    <input type="text" th:field="*{firstName}" size="20" placeholder="Meier">
+<!--                    <label for="firstName">Vorname:</label>-->
+<!--                    <input type="text" id=firstName" name="firstName" size="20" placeholder="Max">-->
+<!--                    <label for="phone">Tel Nummer:</label>-->
+<!--                    <input type="text" id=phone" name="phone" size="20" placeholder="+41791234567">-->
+                    <label for="reservations" >Für wieviel Gäste möchten Sie reservien:</label>
+                    <select th:field="*{reservations}">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -40,23 +42,23 @@
                         <option value="<6"><6</option>
                     </select>
                     <p>Welche Menüwahl möchten Sie treffen</p>
-                    <input type="checkbox" id="apero" name="dish" value="apero">
-                    <label for="apero">Apéro</label><br>
-                    <input type="checkbox" id="firstPlate" name="dish" value="firstPlate">
-                    <label for="firstPlate">Vorspeise</label><br>
-                    <input type="checkbox" id="mainDish" name="dish" value="mainDish">
-                    <label for="mainDish">Hauptspeise</label><br>
-                    <input type="checkbox" id="desert" name="dish" value="desert">
-                    <label for="desert">Dessert</label><br>
+                    <label for="apero">Apéro</label>
+                    <input type="checkbox" th:field="*{dish}" value="apero">
+                    <label for="firstPlate">Vorspeise</label>
+                    <input type="checkbox" th:field="*{dish}" value="firstPlate">
+                    <label for="mainDish">Hauptspeise</label>
+                    <input type="checkbox" th:field="*{dish}" value="mainDish">
+                    <label for="desert">Dessert</label>
+                    <input type="checkbox" th:field="*{dish}"  value="desert">
                     <p>Wählen Sie Ihr Konsumverhalten:</p>
-                    <input type="radio" id="vegi" name="eatingHabit" value="vegi">
+                    <input type="radio" th:field="*{eatingHabit}" value="vegi">
                     <label for="vegi">Vegetarier/in</label><br>
-                    <input type="radio" id="vegan" name="eatingHabit" value="vegan">
+                    <input type="radio" th:field="*{eatingHabit}" value="vegan">
                     <label for="vegan">Veganer/in</label><br>
-                    <input type="radio" id=meatlover" name="eatingHabit" value="meatlover">
-                    <label for="meatlover">Fleischesser</label>
+                    <input type="radio" th:field="*{eatingHabit}" value="meatlover">
+                    <label for="meatlover">Fleischesser/in</label><br>
                     <label for="notes">Bemerkung:</label>
-                    <textarea cols="40" rows="5" id="notes" name="notes"></textarea>
+                    <textarea th:field="*{notes}" cols="40" rows="5"></textarea>
                     <button type="submit">Submit</button>
                 </form>
         </section>
