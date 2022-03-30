@@ -20,8 +20,16 @@ public class ReservationController {
         this.service = service;
     }
 
+    @GetMapping("/addreservation")
+    public String addReservation(Model model) {
+        System.out.println("ReservationController.addReservation");
+        Reservation newReservation = new Reservation("Al-Kubaisi","Abdullah", "3", "apero", "vegi", "");
+        model.addAttribute("reservation", newReservation);
+        return "reservationview";
+    }
+
     @PostMapping("/addreservation")
-    public String addReservation(@ModelAttribute("reservation") Reservation reservation, Model model) {
+    public String addReservation(@ModelAttribute("reservation") Reservation reservation) {
         System.out.println("ReservationController.addReservation");
         System.out.println(reservation);
         service.getReservationList().add(reservation);
@@ -104,11 +112,5 @@ public class ReservationController {
 //        System.out.println("ReservationController.addReservationPost");
 //        return "redirect:/reservationlistview.html";
 //    }
-    //    @GetMapping("/addreservation")
-//    public String addReservation(Model model) {
-//        System.out.println("ReservationController.addReservation");
-//        Reservation newReservation = new Reservation("Al-Kubaisi","Abdullah", "3", "apero", "vegi", "");
-//        model.addAttribute("reservationlsit", newReservation);
-//        return "reservationview";
-//    }
+
 }
