@@ -27,7 +27,9 @@
                 <thead>
                 <tr>
                     <th>Vor/ und Nachname</th>
+                    <th>Tel Nummer</th>
                     <th>Anzahl Gäste</th>
+                    <th>Reservationsdatum</th>
                     <th>Menüwahl</th>
                     <th>Konsumverhalten</th>
                     <th>Bemerkung</th>
@@ -36,7 +38,9 @@
                 <tbody>
                 <tr th:each="reservation : ${reservationlist}">
                     <td th:text="${reservation.firstName} + ' ' + ${reservation.lastName}"></td>
+                    <td th:text="${reservation.phone}"></td>
                     <td th:text="${reservation.reservations}"></td>
+                    <td th:text="${reservation.reservationDate}"></td>
                     <td th:text="${reservation.dish}"></td>
                     <td th:text="${reservation.eatingHabit}"></td>
                     <td th:text="${reservation.notes}"></td>
