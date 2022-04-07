@@ -9,7 +9,7 @@
     <header>
         <nav>
             <ul>
-                <li><a href="/tavernview">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li>Reservieren</li>
                 <li><a href="/">Reservationsliste</a></li>
                 <li><a href="/foodbackview">Foodback</a></li>
@@ -24,40 +24,33 @@
             <h3>Bitte Formular für die Reserviation ausfüllen:</h3>
                 <form th:object="${reservation}" th:action="@{/addreservation}" method="post">
                     <label for="lastName">Name:</label>
-                    <input type="text" th:field="*{lastName}" size="20" placeholder="Meier">
+                    <input id="lastName" type="text" th:field="*{lastName}" size="20" placeholder="Meier"><br>
                     <label for="firstName">Name:</label>
-                    <input type="text" th:field="*{firstName}" size="20" placeholder="Meier">
-<!--                    <label for="firstName">Vorname:</label>-->
-<!--                    <input type="text" id=firstName" name="firstName" size="20" placeholder="Max">-->
-<!--                    <label for="phone">Tel Nummer:</label>-->
-<!--                    <input type="text" id=phone" name="phone" size="20" placeholder="+41791234567">-->
-                    <label for="reservations" >Für wieviel Gäste möchten Sie reservien:</label>
-                    <select th:field="*{reservations}">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="<6"><6</option>
-                    </select>
+                    <input id="firstName" type="text" th:field="*{firstName}" size="20" placeholder="Max">
+                    <label for="phone">Tel Nummer:</label>
+                    <input id="phone" type="text" name="phone" th:field="*{phone}" size="20" placeholder="+41791234567">
+                    <label for="reservations">Für wieviel Gäste möchten Sie reservien:</label>
+                    <input id="reservations" type="text" th:field="*{reservations}" size="20" placeholder="6">
+                    <label for="reservationDate">Datum</label>
+                    <input id="reservationDate" type="date" th:field="*{reservationDate}" size="20" placeholder="01.01.2020">
+
                     <p>Welche Menüwahl möchten Sie treffen</p>
-                    <label for="apero">Apéro</label>
+                    <label>Apéro</label>
                     <input type="checkbox" th:field="*{dish}" value="apero">
-                    <label for="vorspeise">Vorspeise</label>
+                    <label>Vorspeise</label>
                     <input type="checkbox" th:field="*{dish}" value="vorspeise">
-                    <label for="hauptgang">Hauptspeise</label>
+                    <label>Hauptspeise</label>
                     <input type="checkbox" th:field="*{dish}" value="hauptgang">
-                    <label for="desert">Dessert</label>
+                    <label>Dessert</label>
                     <input type="checkbox" th:field="*{dish}"  value="desert">
                     <p>Wählen Sie Ihr Konsumverhalten:</p>
                     <input type="radio" th:field="*{eatingHabit}" value="vegi">
-                    <label for="vegi">Vegetarier/in</label><br>
+                    <label>Vegetarier/in</label><br>
                     <input type="radio" th:field="*{eatingHabit}" value="vegan">
-                    <label for="vegan">Veganer/in</label><br>
+                    <label>Veganer/in</label><br>
                     <input type="radio" th:field="*{eatingHabit}" value="meatlover">
-                    <label for="meatlover">Fleischesser/in</label><br>
-                    <label for="notes">Bemerkung:</label>
+                    <label>Fleischesser/in</label><br>
+                    <label id="notes" for="notes">Bemerkung:</label>
                     <textarea th:field="*{notes}" cols="40" rows="5"></textarea>
                     <button type="submit">Submit</button>
                 </form>

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Date;
+
 @Controller
 public class ReservationController {
 
@@ -23,7 +25,7 @@ public class ReservationController {
     @GetMapping("/addreservation")
     public String addReservation(Model model) {
         System.out.println("ReservationController.addReservation");
-        Reservation newReservation = new Reservation("Al-Kubaisi","Abdullah", "3", "apero", "vegi", "");
+        Reservation newReservation = new Reservation("Al-Kubaisi","Abdullah", "+41785621864","3", "apero", "vegi", "", new Date());
         model.addAttribute("reservation", newReservation);
         return "reservationview";
     }

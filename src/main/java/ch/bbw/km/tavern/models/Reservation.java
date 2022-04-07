@@ -1,20 +1,30 @@
 package ch.bbw.km.tavern.models;
 
-public class Reservation {
-    public String lastName;
-    public String firstName;
-    public String reservations ;
-    public String dish;
-    public String eatingHabit;
-    public String notes;
+import org.springframework.format.annotation.DateTimeFormat;
 
-    public Reservation(String lastName, String firstName, String reservations, String dish, String eatingHabit, String notes) {
+import java.util.Date;
+
+public class Reservation {
+    private String lastName;
+    private String firstName;
+    private String reservations;
+    private String phone;
+    private String dish;
+    private String eatingHabit;
+    private String notes;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date reservationDate;
+
+    public Reservation(String lastName, String firstName, String phone, String reservations, String dish, String eatingHabit, String notes, Date reservationDate) {
         this.lastName = lastName;
         this.firstName = firstName;
+        this.phone = phone;
         this.reservations = reservations;
         this.dish = dish;
         this.eatingHabit = eatingHabit;
         this.notes = notes;
+        this.reservationDate = reservationDate;
+
     }
 
     public String getLastName() {
@@ -41,6 +51,14 @@ public class Reservation {
         this.reservations = reservations;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String getDish() {
         return dish;
     }
@@ -65,6 +83,14 @@ public class Reservation {
         this.notes = notes;
     }
 
+    public Date getReservationDate() {
+        return reservationDate;
+    }
+
+    public void setReservationDate(Date reservationDate) {
+        this.reservationDate = reservationDate;
+    }
+
     @Override
     public String toString() {
         return "Reservation{" +
@@ -74,6 +100,7 @@ public class Reservation {
                 ", dish='" + dish + '\'' +
                 ", eatingHabit='" + eatingHabit + '\'' +
                 ", notes='" + notes + '\'' +
+                ", reservationDate=" + reservationDate +
                 '}';
     }
 }
