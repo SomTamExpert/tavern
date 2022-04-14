@@ -11,10 +11,12 @@ public class Reservation {
     private String lastName;
     @Size(min = 2, max = 50)
     private String firstName;
+    @Max(6)
     private String reservations;
     @NotNull
     @Pattern(regexp = "^(0041|041|\\+41|\\+\\+41|41)?(0|\\(0\\))?([1-9]\\d{1})(\\d{3})(\\d{2})(\\d{2})$")
     private String phone;
+    @NotNull
     private String dish;
     private String eatingHabit;
     private String notes;

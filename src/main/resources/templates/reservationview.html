@@ -34,6 +34,7 @@
                     <b th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></b>
                     <label for="reservations">Für wieviel Gäste möchten Sie reservien:</label>
                     <input id="reservations" type="text" th:field="*{reservations}" size="20" placeholder="4" min="1" max="8" required>
+                    <b th:if="${#fields.hasErrors('reservations')}" th:errors="*{reservations}"></b>
                     <label for="reservationDate">Datum</label>
                     <!-- https://stackoverflow.com/questions/32378590/set-date-input-fields-max-date-to-today -->
                     <input id="reservationDate" type="date" th:field="*{reservationDate}" size="20" placeholder="01.01.2020" min="2022-04-03" max="2022-12-31" onfocus="this.min=new Date().toISOString().split('T')[0]"required>
@@ -47,6 +48,7 @@
                     <input type="checkbox" th:field="*{dish}" value="hauptgang">
                     <label>Dessert</label>
                     <input type="checkbox" th:field="*{dish}"  value="desert">
+                    <b th:if="${#fields.hasErrors('dish')}" th:errors="*{dish}"></b>
                     <p>Wählen Sie Ihr Konsumverhalten:</p>
                     <input type="radio" th:field="*{eatingHabit}" value="vegi">
                     <label>Vegetarier/in</label><br>
