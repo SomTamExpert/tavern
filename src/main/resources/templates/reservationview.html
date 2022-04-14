@@ -22,18 +22,22 @@
         <h1>Reservation erfassen</h1>
         <section>
             <h3>Bitte Formular für die Reserviation ausfüllen:</h3>
-                <form th:object="${reservation}" th:action="@{/addreservation}" method="post">
+                <form th:object="${reservation}" th:action="@{/addreservation}" method="post" novalidate>
                     <label for="lastName">Name:</label>
-                    <input id="lastName" type="text" th:field="*{lastName}" size="20" placeholder="Meier" maxlength="12" required><br>
-                    <label for="firstName">Name:</label>
-                    <input id="firstName" type="text" th:field="*{firstName}" size="20" placeholder="Max" maxlength="12" required>
+                    <input id="lastName" type="text" th:field="*{lastName}" size="20" placeholder="Meier" maxlength="12" required pattern="[A-Z][a-zäöü]*(([\-][A-Z])|())[a-zäöü]*"><br>
+                    <b th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" ></b>
+                    <label for="firstName">Vorname:</label>
+                    <input id="firstName" type="text" th:field="*{firstName}" size="20" placeholder="Max" maxlength="12" required pattern="[A-Z]{1}[a-zäöü]*">
+                    <b th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" ></b>
                     <label for="phone">Tel Nummer:</label>
                     <input id="phone" type="text" name="phone" th:field="*{phone}" size="20" placeholder="+41791234567" required>
+                    <b th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></b>
                     <label for="reservations">Für wieviel Gäste möchten Sie reservien:</label>
                     <input id="reservations" type="text" th:field="*{reservations}" size="20" placeholder="4" min="1" max="8" required>
                     <label for="reservationDate">Datum</label>
-                    <input id="reservationDate" type="date" th:field="*{reservationDate}" size="20" placeholder="01.01.2020" min="2022-04-03" max="2022-12-31" required>
-
+                    <!-- https://stackoverflow.com/questions/32378590/set-date-input-fields-max-date-to-today -->
+                    <input id="reservationDate" type="date" th:field="*{reservationDate}" size="20" placeholder="01.01.2020" min="2022-04-03" max="2022-12-31" onfocus="this.min=new Date().toISOString().split('T')[0]"required>
+                    <b th:if="${#fields.hasErrors('reservationDate')}" th:errors="*{reservationDate}" ></b>
                     <p>Welche Menüwahl möchten Sie treffen</p>
                     <label>Apéro</label>
                     <input type="checkbox" th:field="*{dish}" value="apero">

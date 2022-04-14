@@ -5,10 +5,12 @@ import ch.bbw.km.tavern.models.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
 import java.util.Date;
 
 @Controller
@@ -31,9 +33,13 @@ public class ReservationController {
     }
 
     @PostMapping("/addreservation")
-    public String addReservation(@ModelAttribute("reservation") Reservation reservation) {
+    public String addReservation(@Valid @ModelAttribute("reservation") Reservation reservation, BindingResult bindingResult) {
         System.out.println("ReservationController.addReservation");
         System.out.println(reservation);
+        if(bindingResult.hasErrors()) {
+            System.out.println("ReservationController.addReservation: hasErrors");
+            return "reservationview";
+        }
         service.getReservationList().add(reservation);
         return "redirect:/reservationlistview";
     }

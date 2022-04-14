@@ -2,17 +2,24 @@ package ch.bbw.km.tavern.models;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.*;
 import java.util.Date;
 
 public class Reservation {
+    @NotNull
+    @Size(min = 2, max = 50)
     private String lastName;
+    @Size(min = 2, max = 50)
     private String firstName;
     private String reservations;
+    @NotNull
+    @Pattern(regexp = "/(\\b(0041|0)|\\B\\+41)(\\s?\\(0\\))?(\\s)?[1-9]{2}(\\s)?[0-9]{3}(\\s)?[0-9]{2}(\\s)?[0-9]{2}\\b/")
     private String phone;
     private String dish;
     private String eatingHabit;
     private String notes;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Future
     private Date reservationDate;
 
     public Reservation(String lastName, String firstName, String phone, String reservations, String dish, String eatingHabit, String notes, Date reservationDate) {
