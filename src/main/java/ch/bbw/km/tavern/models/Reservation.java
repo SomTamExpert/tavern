@@ -13,7 +13,7 @@ public class Reservation {
     private String firstName;
     private String reservations;
     @NotNull
-    @Pattern(regexp = "/(\\b(0041|0)|\\B\\+41)(\\s?\\(0\\))?(\\s)?[1-9]{2}(\\s)?[0-9]{3}(\\s)?[0-9]{2}(\\s)?[0-9]{2}\\b/")
+    @Pattern(regexp = "^(0041|041|\\+41|\\+\\+41|41)?(0|\\(0\\))?([1-9]\\d{1})(\\d{3})(\\d{2})(\\d{2})$")
     private String phone;
     private String dish;
     private String eatingHabit;
